@@ -1,0 +1,13 @@
+.DS_Store
+
+# Build output directory
+dist/
+
+# `yarn set version classic` で生成されたファイル（damreyでpre-commit時のyarnのバージョン不一致を回避するために実行したら作成された）
+.yarnrc.yml
+.yarn/releases/yarn-classic.cjs
+
+# Claude Code
+.claude/CLAUDE.md
+.claude/local/*
+.claude/commands/local/*
