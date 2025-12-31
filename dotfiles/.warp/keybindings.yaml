@@ -1,0 +1,6 @@
+---
+"pane_group:navigate_left": none
+"terminal:ask_ai_assistant": none
+"workspace:activate_prev_tab": alt-cmd-left
+"workspace:activate_next_tab": alt-cmd-right
+"pane_group:navigate_right": none
