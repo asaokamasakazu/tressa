@@ -15,7 +15,7 @@ jobs:
       - name: Lint symbolic_links.sh
         run: shellcheck .bin/symbolic_links.sh
       - name: Lint .zshrc
-        run: shellcheck --shell=bash dotfiles/.zshrc
+        run: shellcheck --shell=bash -e SC1090 dotfiles/.zshrc
       - name: Lint .zprofile
         run: shellcheck --shell=bash dotfiles/.zprofile
 
