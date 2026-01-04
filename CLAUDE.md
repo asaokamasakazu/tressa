@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a dotfiles repository (tressa) for managing personal configuration files across machines.
+This is a dotfiles repository (tressa) for managing personal configuration files on macOS.
 
 ## Commands
 
@@ -21,14 +21,33 @@ make symbolic_links
 
 ```
 tressa/
-├── dotfiles/          # Dotfiles to be symlinked to ~/
-│   └── .??*           # Files matching this pattern are linked
+├── dotfiles/              # Dotfiles to be symlinked to ~/
+│   ├── .Brewfile          # Homebrew packages
+│   ├── .gitconfig         # Git configuration
+│   ├── .gitignore_global  # Global gitignore
+│   ├── .warp/             # Warp terminal settings
+│   ├── .zprofile          # Zsh login profile
+│   └── .zshrc             # Zsh configuration
 ├── .bin/
 │   └── symbolic_links.sh  # Symlink creation script
-└── Makefile           # make symbolic_links
+├── .github/workflows/
+│   └── lint-and-test.yaml # CI workflow
+└── Makefile               # make symbolic_links
 ```
 
 The `symbolic_links.sh` script:
 - Creates `~/.dotbackup` for backing up existing files
 - Symlinks all `dotfiles/.??*` files to `$HOME`
 - Existing files are moved to `~/.dotbackup` before linking
+
+## Brewfile
+
+The `brew` function in `dotfiles/.zshrc` automatically updates `~/.Brewfile` after `brew install/uninstall/tap/untap`.
+
+## CI
+
+GitHub Actions (`lint-and-test.yaml`):
+- Lint shell scripts with shellcheck
+- Test symlink creation
+- Validate Brewfile syntax
+- Validate YAML files
