@@ -1,9 +1,6 @@
 # Alias
 alias ecommit='git commit --allow-empty -m "empty commit"'
 
-# Homebrew: Shell environment
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # Local bin: User scripts
 export PATH="$HOME/.local/bin:$PATH"
 
