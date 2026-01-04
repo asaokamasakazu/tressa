@@ -1,0 +1,18 @@
+# This is Git's per-user configuration file.
+[user]
+	name = yukiji
+	email = 107730981+asaokamasakazu@users.noreply.github.com
+	signingkey = 2702AE1AACF32450
+[core]
+	excludesfile = ~/.gitignore_global
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[gpg]
+	program = /opt/homebrew/bin/gpg
