@@ -1,0 +1,55 @@
+name: Lint and Test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint Shell Scripts
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: brew install shellcheck
+      - name: Lint symbolic_links.sh
+        run: shellcheck .bin/symbolic_links.sh
+      - name: Lint .zshrc
+        run: shellcheck --shell=bash dotfiles/.zshrc
+      - name: Lint .zprofile
+        run: shellcheck --shell=bash dotfiles/.zprofile
+
+  symlink-test:
+    name: Test Symlink Creation
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run symbolic_links.sh
+        run: ./.bin/symbolic_links.sh
+      - name: Verify symlinks created
+        run: |
+          test -L "$HOME/.Brewfile"
+          test -L "$HOME/.zshrc"
+          test -L "$HOME/.zprofile"
+          test -L "$HOME/.gitconfig"
+          test -L "$HOME/.gitignore_global"
+          test -L "$HOME/.warp"
+          echo "All symlinks verified"
+
+  brewfile-check:
+    name: Validate Brewfile Syntax
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Brewfile syntax
+        run: brew bundle list --file=dotfiles/.Brewfile --all
+
+  yaml-validation:
+    name: Validate YAML Files
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install yamllint
+        run: brew install yamllint
+      - name: Validate keybindings.yaml
+        run: yamllint dotfiles/.warp/keybindings.yaml
