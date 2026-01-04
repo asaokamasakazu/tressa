@@ -1,5 +1,5 @@
 # Alias
-alias ecommit='git commit --allow-empty-message -m "empty commit"'
+alias ecommit='git commit --allow-empty -m "empty commit"'
 
 # Homebrew: Shell environment
 eval "$(/opt/homebrew/bin/brew shellenv)"
