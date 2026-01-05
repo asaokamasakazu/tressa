@@ -36,7 +36,8 @@ link_to_homedir() {
     fi
 
     if [[ -e "$target" && ! -L "$target" ]]; then
-      local backup_dir="$HOME/.dotbackup/$(dirname "$relpath")"
+      local backup_dir
+      backup_dir="$HOME/.dotbackup/$(dirname "$relpath")"
       command mkdir -p "$backup_dir"
       command mv "$target" "$backup_dir/"
     fi
