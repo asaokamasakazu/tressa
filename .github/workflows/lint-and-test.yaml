@@ -36,7 +36,7 @@ jobs:
           test -L "$HOME/.warp/keybindings.yaml"
           test -L "$HOME/.claude/settings.json"
           test -L "$HOME/.claude/CLAUDE.md"
-          test -L "$HOME/.claude/skills"
+          test -L "$HOME/.claude/skills/implement-design/SKILL.md"
           echo "All symlinks verified"
 
   brewfile-check:
