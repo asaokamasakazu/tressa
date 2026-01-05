@@ -49,4 +49,5 @@ mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Skitch", id: 425955336
 mas "The Unarchiver", id: 425424353
