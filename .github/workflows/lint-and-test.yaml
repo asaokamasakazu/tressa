@@ -33,7 +33,10 @@ jobs:
           test -L "$HOME/.zprofile"
           test -L "$HOME/.gitconfig"
           test -L "$HOME/.gitignore_global"
-          test -L "$HOME/.warp"
+          test -L "$HOME/.warp/keybindings.yaml"
+          test -L "$HOME/.claude/settings.json"
+          test -L "$HOME/.claude/CLAUDE.md"
+          test -L "$HOME/.claude/skills"
           echo "All symlinks verified"
 
   brewfile-check:
