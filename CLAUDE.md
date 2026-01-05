@@ -31,6 +31,7 @@ tressa/
 │   ├── .gitignore_global  # Global gitignore
 │   ├── .warp/             # Warp terminal settings
 │   ├── .zprofile          # Zsh login profile
+│   ├── .zshenv            # Zsh environment variables
 │   └── .zshrc             # Zsh configuration
 ├── .bin/
 │   └── symbolic_links.sh  # Symlink creation script

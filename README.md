@@ -20,6 +20,7 @@ dotfiles/           # Configuration files to be symlinked
   .gitignore_global
   .warp/            # Warp terminal settings
   .zprofile         # Zsh login profile
+  .zshenv           # Zsh environment variables
   .zshrc            # Zsh configuration
 .bin/               # Setup scripts
 .github/workflows/  # CI workflows
