@@ -23,6 +23,10 @@ make symbolic_links
 tressa/
 ├── dotfiles/              # Dotfiles to be symlinked to ~/
 │   ├── .Brewfile          # Homebrew packages
+│   ├── .claude/           # Claude Code settings
+│   │   ├── CLAUDE.md
+│   │   ├── settings.json
+│   │   └── skills/
 │   ├── .gitconfig         # Git configuration
 │   ├── .gitignore_global  # Global gitignore
 │   ├── .warp/             # Warp terminal settings
@@ -36,13 +40,14 @@ tressa/
 ```
 
 The `symbolic_links.sh` script:
+- Recursively creates file-level symlinks (not directory-level)
 - Creates `~/.dotbackup` for backing up existing files
-- Symlinks all `dotfiles/.??*` files to `$HOME`
+- Merges with existing directories (does not overwrite)
 - Existing files are moved to `~/.dotbackup` before linking
 
 ## Brewfile
 
-The `brew` function in `dotfiles/.zshrc` automatically updates `~/.Brewfile` after `brew install/uninstall/tap/untap`.
+The `brew` function in `dotfiles/.zshrc` automatically runs `brew bundle dump --global --force --no-vscode` after `brew install/uninstall/tap/untap`.
 
 ## CI
 
