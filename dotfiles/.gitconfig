@@ -16,3 +16,6 @@
 	rebase = false
 [gpg]
 	program = /opt/homebrew/bin/gpg
+[ghq]
+	root = ~/Desktop/applications
+	user = asaokamasakazu
