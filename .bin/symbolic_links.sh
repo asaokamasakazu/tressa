@@ -18,18 +18,31 @@ link_to_homedir() {
 
   local script_dir
   script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-  local dotdir="${script_dir}/../dotfiles"
+  local dotdir
+  dotdir="$(cd "$script_dir/../dotfiles" && pwd -P)"
 
-  for f in "$dotdir"/.??*; do
-    local filename
-    filename=$(basename "$f")
-    local target="$HOME/$filename"
+  find "$dotdir" -type f | while read -r f; do
+    local relpath="${f#"$dotdir"/}"
+    local target="$HOME/$relpath"
+    local target_dir
+    target_dir=$(dirname "$target")
 
-    if [[ -e "$target" ]]; then
-      command mv "$target" "$HOME/.dotbackup"
+    # 親ディレクトリがシンボリックリンクの場合は削除してから実ディレクトリを作成（循環参照を避けるため）
+    if [[ -L "$target_dir" ]]; then
+      command rm "$target_dir"
     fi
+    if [[ ! -d "$target_dir" ]]; then
+      command mkdir -p "$target_dir"
+    fi
+
+    if [[ -e "$target" && ! -L "$target" ]]; then
+      local backup_dir="$HOME/.dotbackup/$(dirname "$relpath")"
+      command mkdir -p "$backup_dir"
+      command mv "$target" "$backup_dir/"
+    fi
+
     command ln -snf "$f" "$target"
-    command echo "Linked: $filename"
+    command echo "Linked: $relpath"
   done
 }
 
