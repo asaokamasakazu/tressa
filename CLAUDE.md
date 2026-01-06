@@ -26,7 +26,8 @@ tressa/
 │   ├── .claude/           # Claude Code settings
 │   │   ├── CLAUDE.md
 │   │   ├── settings.json
-│   │   └── skills/
+│   │   ├── skills/
+│   │   └── statusline.sh  # Status line script
 │   ├── .gitconfig         # Git configuration
 │   ├── .gitignore_global  # Global gitignore
 │   ├── .warp/             # Warp terminal settings

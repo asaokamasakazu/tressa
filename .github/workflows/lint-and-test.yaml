@@ -18,6 +18,8 @@ jobs:
         run: shellcheck --shell=bash -e SC1090 dotfiles/.zshrc
       - name: Lint .zprofile
         run: shellcheck --shell=bash dotfiles/.zprofile
+      - name: Lint statusline.sh
+        run: shellcheck dotfiles/.claude/statusline.sh
 
   symlink-test:
     name: Test Symlink Creation
@@ -36,6 +38,7 @@ jobs:
           test -L "$HOME/.warp/keybindings.yaml"
           test -L "$HOME/.claude/settings.json"
           test -L "$HOME/.claude/CLAUDE.md"
+          test -L "$HOME/.claude/statusline.sh"
           test -L "$HOME/.claude/skills/implement-design/SKILL.md"
           echo "All symlinks verified"
 

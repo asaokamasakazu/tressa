@@ -15,7 +15,7 @@ This creates symbolic links from `dotfiles/` to your home directory. Existing fi
 ```
 dotfiles/           # Configuration files to be symlinked
   .Brewfile         # Homebrew packages
-  .claude/          # Claude Code settings
+  .claude/          # Claude Code settings and statusline script
   .gitconfig        # Git configuration
   .gitignore_global
   .warp/            # Warp terminal settings
