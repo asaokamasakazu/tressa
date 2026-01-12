@@ -15,3 +15,6 @@ dist/
 # Damrey: RubyMineが自動で生成するファイル
 engines/ad_manager_client/Gemfile.lock
 engines/admin/bbs_admin/Gemfile.lock
+
+# Luna: subspace用のdocker-composeファイル
+docker-compose.subspace.yaml
