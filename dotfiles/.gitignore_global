@@ -7,6 +7,7 @@ dist/
 .claude/CLAUDE.md
 .claude/local/*
 .claude/commands/local/*
+.serena/
 
 # Damrey: `yarn set version classic` で生成されたファイル（damreyでpre-commit時のyarnのバージョン不一致を回避するために実行したら作成された）
 .yarnrc.yml
@@ -16,5 +17,5 @@ dist/
 engines/ad_manager_client/Gemfile.lock
 engines/admin/bbs_admin/Gemfile.lock
 
-# Luna: subspace用のdocker-composeファイル
+# subspace用のdocker-composeファイル
 docker-compose.subspace.yaml
