@@ -1,14 +1,50 @@
-#!/bin/bash
+#!/usr/bin/env python3
+"""Braille dots status line for Claude Code"""
+import json, sys
 
-input=$(cat)
-model=$(echo "$input" | jq -r '.model.display_name')
-usage=$(echo "$input" | jq '.context_window.current_usage')
+data = json.load(sys.stdin)
 
-if [ "$usage" != "null" ]; then
-  current=$(echo "$usage" | jq '.input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
-  size=$(echo "$input" | jq '.context_window.context_window_size')
-  pct=$((current * 100 / size))
-  printf '\033[36m%s\033[0m | \033[33m%d%% context\033[0m' "$model" "$pct"
-else
-  printf '\033[36m%s\033[0m | \033[90mno context yet\033[0m' "$model"
-fi
+BRAILLE = ' ⣀⣄⣤⣦⣶⣷⣿'
+R = '\033[0m'
+DIM = '\033[2m'
+
+def gradient(pct):
+    if pct < 50:
+        r = int(pct * 5.1)
+        return f'\033[38;2;{r};200;80m'
+    else:
+        g = int(200 - (pct - 50) * 4)
+        return f'\033[38;2;255;{max(g, 0)};60m'
+
+def braille_bar(pct, width=5):
+    pct = min(max(pct, 0), 100)
+    level = pct / 100
+    bar = ''
+    for i in range(width):
+        seg_start = i / width
+        seg_end = (i + 1) / width
+        if level >= seg_end:
+            bar += BRAILLE[7]
+        elif level <= seg_start:
+            bar += BRAILLE[0]
+        else:
+            frac = (level - seg_start) / (seg_end - seg_start)
+            bar += BRAILLE[min(int(frac * 7), 7)]
+    return bar
+
+def fmt(label, pct):
+    p = round(pct)
+    return f'{DIM}{label}{R} {gradient(pct)}{braille_bar(pct)}{R} {p}%'
+
+model = data.get('model', {}).get('display_name', 'Claude').split()[0]
+parts = [model]
+
+ctx = data.get('context_window', {}).get('used_percentage')
+if ctx is not None:
+    parts.append(fmt('ctx', ctx))
+
+week = data.get('rate_limits', {}).get('seven_day', {}).get('used_percentage')
+if week is not None:
+    parts.append(fmt('7d', week))
+
+print(f' {DIM}│{R} '.join(parts), end='')
