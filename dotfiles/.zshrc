@@ -1,6 +1,6 @@
 # Alias
 alias ecommit='git commit --allow-empty -m "empty commit"'
-alias bucc='brew upgrade claude-code'
+alias bucc='brew upgrade claude-code@latest'
 
 # Local bin: User scripts
 export PATH="$HOME/.local/bin:$PATH"
