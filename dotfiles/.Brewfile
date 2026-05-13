@@ -28,7 +28,7 @@ cask "antigravity"
 cask "betterdisplay"
 cask "chatgpt"
 cask "claude"
-cask "claude-code"
+cask "claude-code@latest"
 cask "cmux"
 cask "datagrip"
 cask "deepl"
@@ -60,3 +60,4 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Skitch", id: 425955336
 mas "The Unarchiver", id: 425424353
+npm "corepack"
