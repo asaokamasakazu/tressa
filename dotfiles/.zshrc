@@ -9,7 +9,7 @@ export PATH="$HOME/.local/bin:$PATH"
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 # Antigravity: CLI tools
-export PATH="/Users/masakazuasaoka/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # Homebrew: Auto-update Brewfile after install/uninstall/tap/untap
 brew() {
@@ -17,4 +17,11 @@ brew() {
   if [[ "$1" =~ ^(install|uninstall|tap|untap)$ ]]; then
     command brew bundle dump --global --force --no-vscode
   fi
+}
+
+# ghq: gf + Enter でリポジトリを fzf 絞り込み → cd
+gf() {
+  local selected_dir
+  selected_dir=$(ghq list | fzf --prompt="ghq> " --height=50% --reverse) || return
+  [ -n "$selected_dir" ] && cd "$(ghq root)/$selected_dir"
 }
