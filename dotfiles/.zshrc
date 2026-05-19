@@ -23,5 +23,5 @@ brew() {
 gf() {
   local selected_dir
   selected_dir=$(ghq list | fzf --prompt="ghq> " --height=50% --reverse) || return
-  [ -n "$selected_dir" ] && cd "$(ghq root)/$selected_dir"
+  [ -n "$selected_dir" ] && cd "$(ghq root)/$selected_dir" || return
 }
