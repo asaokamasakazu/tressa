@@ -17,5 +17,5 @@
 [gpg]
 	program = /opt/homebrew/bin/gpg
 [ghq]
-	root = ~/Desktop/applications
+	root = ~/Desktop/ghq
 	user = asaokamasakazu
