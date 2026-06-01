@@ -7,6 +7,7 @@ dist/
 .claude/CLAUDE.md
 .claude/local/*
 .claude/commands/local/*
+.claude/worktrees/*
 .serena/
 
 # Damrey: `yarn set version classic` で生成されたファイル（damreyでpre-commit時のyarnのバージョン不一致を回避するために実行したら作成された）
