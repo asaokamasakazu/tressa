@@ -34,7 +34,9 @@
     "phpstorm-plugin@phpstorm-marketplace": true,
     "skill-creator@claude-plugins-official": true,
     "warp@claude-code-warp": true,
-    "feature-dev@claude-plugins-official": true
+    "feature-dev@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "mcp-server-dev@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "phpstorm-marketplace": {
