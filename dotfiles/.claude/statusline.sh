@@ -36,7 +36,7 @@ def fmt(label, pct):
     p = round(pct)
     return f'{DIM}{label}{R} {gradient(pct)}{braille_bar(pct)}{R} {p}%'
 
-model = data.get('model', {}).get('display_name', 'Claude').split()[0]
+model = data.get('model', {}).get('display_name', 'Claude')
 parts = [model]
 
 ctx = data.get('context_window', {}).get('used_percentage')
