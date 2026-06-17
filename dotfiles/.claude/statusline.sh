@@ -39,6 +39,10 @@ def fmt(label, pct):
 model = data.get('model', {}).get('display_name', 'Claude')
 parts = [model]
 
+effort = data.get('effort', {}).get('level')
+if effort:
+    parts.append(f'{DIM}effort{R} {effort}')
+
 ctx = data.get('context_window', {}).get('used_percentage')
 if ctx is not None:
     parts.append(fmt('ctx', ctx))
