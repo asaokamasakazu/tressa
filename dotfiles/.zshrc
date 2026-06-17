@@ -19,9 +19,18 @@ brew() {
   fi
 }
 
-# ghq: gf + Enter でリポジトリを fzf 絞り込み → cd
+# ghq: gf + Enter でリポジトリ（+ Claude Code ワークツリー）を fzf 絞り込み → cd
 gf() {
-  local selected_dir
-  selected_dir=$(ghq list | fzf --prompt="ghq> " --height=50% --reverse) || return
-  [ -n "$selected_dir" ] && cd "$(ghq root)/$selected_dir" || return
+  local root selected_dir
+  root=$(ghq root)
+  selected_dir=$(
+    ghq list -p | while IFS= read -r repo; do
+      echo "${repo#"$root"/}"
+      # Claude Code ネイティブワークツリー（.claude/worktrees/<name>）も候補に含める
+      for wt in "$repo"/.claude/worktrees/*(/N); do
+        echo "${wt#"$root"/}"
+      done
+    done | fzf --prompt="ghq> " --height=50% --reverse
+  ) || return
+  [ -n "$selected_dir" ] && cd "$root/$selected_dir" || return
 }
