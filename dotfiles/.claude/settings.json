@@ -33,10 +33,10 @@
     "claude-md-management@claude-plugins-official": true,
     "phpstorm-plugin@phpstorm-marketplace": true,
     "skill-creator@claude-plugins-official": true,
-    "warp@claude-code-warp": true,
     "feature-dev@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "mcp-server-dev@claude-plugins-official": true
+    "mcp-server-dev@claude-plugins-official": true,
+    "warp@claude-code-warp": true
   },
   "extraKnownMarketplaces": {
     "phpstorm-marketplace": {
@@ -55,7 +55,9 @@
   "language": "Japanese",
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "skipWorkflowUsageWarning": true,
   "autoCompactEnabled": false,
+  "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true
 }
