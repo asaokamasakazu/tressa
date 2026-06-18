@@ -34,3 +34,16 @@ gf() {
   ) || return
   [ -n "$selected_dir" ] && cd "$root/$selected_dir" || return
 }
+
+# git: gb + Enter でローカルブランチを fzf 絞り込み → switch（現在のブランチを先頭、以降アルファベット順）
+gb() {
+  local current selected_branch
+  current=$(git branch --show-current)
+  selected_branch=$(
+    {
+      [ -n "$current" ] && echo "$current"
+      git branch --sort=refname --format='%(refname:short)' | grep -vxF -- "$current"
+    } | fzf --prompt="branch> " --height=50% --reverse
+  ) || return
+  [ -n "$selected_branch" ] && git switch "$selected_branch"
+}
