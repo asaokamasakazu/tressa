@@ -51,8 +51,6 @@ brew "uv"
 brew "volta"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
-# Agent orchestration platform
-cask "antigravity"
 # Display management tool
 cask "betterdisplay"
 # OpenAI's official ChatGPT desktop app
@@ -61,12 +59,6 @@ cask "chatgpt"
 cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
-# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
-cask "cmux"
-# Databases and SQL IDE
-cask "datagrip"
-# AI-powered translator
-cask "deepl"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
@@ -77,12 +69,12 @@ cask "gcloud-cli"
 cask "google-chrome"
 # Japanese input software
 cask "google-japanese-ime"
+# Agentic development environment
+cask "jetbrains-air"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Blocks all Keyboard and TouchBar input
 cask "keyboardcleantool"
-# Agent-centric IDE with spec-driven development
-cask "kiro"
 # Software for Logitech devices
 cask "logi-options+"
 # GitHub and Linear notifications on your desktop and menu bar
@@ -103,8 +95,7 @@ cask "slack"
 cask "tableplus"
 # Open-source code editor
 cask "visual-studio-code"
-# Restores the macOS volume HUD from pre-Tahoe
-cask "dannystewart/apps/volumehud"
+cask "volumehud"
 # Rust-based terminal
 cask "warp"
 mas "Balance Lock", id: 1019371109
