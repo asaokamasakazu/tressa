@@ -1,5 +1,4 @@
 tap "dannystewart/apps"
-tap "manaflow-ai/cmux"
 tap "snowflakedb/snowflake-cli"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
