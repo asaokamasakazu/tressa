@@ -47,3 +47,35 @@ gb() {
   ) || return
   [ -n "$selected_branch" ] && git switch "$selected_branch"
 }
+
+# git: gbd + Enter でローカルブランチを fzf 複数選択（Tab）→ 削除（未マージは確認して -D）
+gbd() {
+  local current selected b err
+  current=$(git branch --show-current)
+  selected=$(
+    git branch --sort=refname --format='%(refname:short) %(upstream:track)' \
+      | awk -v cur="$current" '$1 != cur' \
+      | fzf -m --prompt="delete> " --height=50% --reverse --header="Tab で複数選択" \
+      | awk '{print $1}'
+  ) || return
+  [ -n "$selected" ] || return
+  for b in ${(f)selected}; do
+    if err=$(git branch -d "$b" 2>&1); then
+      echo "$err"
+    elif [[ "$err" == *"not fully merged"* ]]; then
+      printf "%s は未マージです。強制削除 (-D) しますか？ [y/N] " "$b"
+      if read -q; then echo; git branch -D "$b"; else echo; fi
+    else
+      echo "$err"
+    fi
+  done
+}
+
+# gcloud の認証が切れていたら自動で再ログイン
+gcloud() {
+  if [[ "$1" != "auth" ]] && ! command gcloud auth print-access-token >/dev/null 2>&1; then
+    echo "gcloud session expired. Re-authenticating..." >&2
+    command gcloud auth login --update-adc || return $?
+  fi
+  command gcloud "$@"
+}
