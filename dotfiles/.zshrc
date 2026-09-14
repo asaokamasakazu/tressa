@@ -49,6 +49,7 @@ gb() {
 }
 
 # git: gbd + Enter でローカルブランチを fzf 複数選択（Tab）→ 削除（未マージは確認して -D）
+# shellcheck disable=SC2296,SC2162 # zsh 固有構文（${(f)var} / read -q）のため
 gbd() {
   local current selected b err
   current=$(git branch --show-current)
