@@ -36,7 +36,6 @@ jobs:
           test -L "$HOME/.gitconfig"
           test -L "$HOME/.gitignore_global"
           test -L "$HOME/.warp/keybindings.yaml"
-          test -L "$HOME/.claude/settings.json"
           test -L "$HOME/.claude/CLAUDE.md"
           test -L "$HOME/.claude/statusline.sh"
           echo "All symlinks verified"

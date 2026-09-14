@@ -25,7 +25,6 @@ tressa/
 │   ├── .Brewfile          # Homebrew packages
 │   ├── .claude/           # Claude Code settings
 │   │   ├── CLAUDE.md
-│   │   ├── settings.json
 │   │   ├── skills/
 │   │   └── statusline.sh  # Status line script
 │   ├── .gitconfig         # Git configuration
