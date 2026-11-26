@@ -10,12 +10,20 @@ make symbolic_links
 
 This creates symbolic links from `dotfiles/` to your home directory. Existing files are backed up to `~/.dotbackup`.
 
+On a new Mac (with Homebrew installed), open a new terminal so `.zshenv` puts the mise shims on `PATH`, then:
+
+```bash
+brew bundle --global  # everything in ~/.Brewfile, including mise
+mise install          # Node.js / pnpm / yarn from ~/.config/mise/config.toml
+```
+
 ## Structure
 
 ```
 dotfiles/           # Configuration files to be symlinked
   .Brewfile         # Homebrew packages
   .claude/          # Claude Code settings and statusline script
+  .config/mise/     # mise global tool versions (Node.js / pnpm / yarn)
   .gitconfig        # Git configuration
   .gitignore_global
   .warp/            # Warp terminal settings
@@ -28,7 +36,7 @@ dotfiles/           # Configuration files to be symlinked
 
 ## Brewfile
 
-The `brew` function in `.zshrc` automatically runs `brew bundle dump --global --force --no-vscode` after `brew install/uninstall/tap/untap`, keeping `~/.Brewfile` up to date.
+The `brew` function in `.zshrc` automatically runs `brew bundle dump --global --force --no-vscode --no-npm` after `brew install/uninstall/tap/untap`, keeping `~/.Brewfile` up to date.
 
 ## CI
 

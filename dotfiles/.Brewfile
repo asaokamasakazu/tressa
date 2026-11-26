@@ -40,6 +40,8 @@ brew "go"
 brew "herdr"
 # Mac App Store command-line interface
 brew "mas"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # CLI for snowflake
@@ -48,8 +50,6 @@ brew "snowflake-cli"
 brew "tenv"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
-# JavaScript toolchain manager for reproducible environments
-brew "volta"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Display management tool
@@ -109,4 +109,3 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Skitch", id: 425955336
 mas "The Unarchiver", id: 425424353
-npm "corepack"

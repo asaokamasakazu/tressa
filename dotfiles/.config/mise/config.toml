@@ -1,0 +1,8 @@
+[tools]
+node = "24.22.3"
+pnpm = "10.34.9"
+yarn = "4.12.0"
+
+[settings]
+# Follow each repo's .nvmrc / .node-version (off by default in mise); repos without one use [tools].node
+idiomatic_version_file_enable_tools = ["node"]

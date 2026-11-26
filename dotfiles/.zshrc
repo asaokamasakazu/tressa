@@ -15,7 +15,8 @@ export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 brew() {
   command brew "$@"
   if [[ "$1" =~ ^(install|uninstall|tap|untap)$ ]]; then
-    command brew bundle dump --global --force --no-vscode
+    # --no-npm: npm globals belong to whichever Node mise has active, and an npm entry makes `brew bundle` install Homebrew's node on a Mac without npm
+    command brew bundle dump --global --force --no-vscode --no-npm
   fi
 }
 

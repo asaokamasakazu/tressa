@@ -27,6 +27,7 @@ tressa/
 │   │   ├── CLAUDE.md
 │   │   ├── skills/
 │   │   └── statusline.sh  # Status line script
+│   ├── .config/mise/      # mise global tool versions (Node.js / pnpm / yarn)
 │   ├── .gitconfig         # Git configuration
 │   ├── .gitignore_global  # Global gitignore
 │   ├── .warp/             # Warp terminal settings
@@ -48,7 +49,7 @@ The `symbolic_links.sh` script:
 
 ## Brewfile
 
-The `brew` function in `dotfiles/.zshrc` automatically runs `brew bundle dump --global --force --no-vscode` after `brew install/uninstall/tap/untap`.
+The `brew` function in `dotfiles/.zshrc` automatically runs `brew bundle dump --global --force --no-vscode --no-npm` after `brew install/uninstall/tap/untap`.
 
 ## CI
 
