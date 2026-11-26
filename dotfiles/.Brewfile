@@ -1,5 +1,4 @@
 tap "dannystewart/apps"
-tap "snowflakedb/snowflake-cli"
 # Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
 # Securely store and access AWS credentials in development environments
@@ -98,7 +97,8 @@ cask "slack"
 cask "tableplus"
 # Open-source code editor
 cask "visual-studio-code"
-cask "volumehud"
+# Bring back the pre-Tahoe macOS volume and brightness UI
+cask "dannystewart/apps/volumehud", trusted: true
 # Rust-based terminal
 cask "warp"
 mas "Balance Lock", id: 1019371109
@@ -109,3 +109,4 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Skitch", id: 425955336
 mas "The Unarchiver", id: 425424353
+uv "mcp-proxy-for-aws"
