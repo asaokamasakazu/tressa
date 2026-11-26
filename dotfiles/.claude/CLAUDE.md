@@ -41,4 +41,18 @@ fix: 🐛 予約作成時のバリデーション漏れを修正
 
 指摘: https://github.com/AdbentoboyInc/luna/pull/622#discussion_r123456
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+# ブラウザ操作
+- 既定では chrome-devtools（ヘッドレス）を使う
+- 次の場合は chrome-devtools-headed を使う。自分の判断で切り替えるときは、理由を一言伝える
+  - 「ウィンドウを見たい」と言われたとき
+  - SSO・二要素認証・CAPTCHA など、人が手で操作する必要があるとき
+  - ヘッドレスが原因と疑われる失敗（403、空のページ、広告が出ない）が起きたとき
+  - WebGL・canvas・動画・アニメーションなど、描画の見え方を確認するとき
+
+## chrome-devtools-headed のプロファイル競合
+- chrome-devtools は `--isolated` 付きで登録してあり、セッションごとに使い捨てのプロファイルで起動する。並列セッションで同時に使っても競合しないが、ログイン状態はセッションをまたいで残らない
+- chrome-devtools-headed は、手動でログインした状態を残すために固定のプロファイルで起動する。同じプロファイルの Chrome は同時に1つしか起動できないので、別のセッションが使用中だと `The browser is already running for <パス>. Use --isolated to run multiple browser instances.` で失敗する
+- このエラーが出たら、次のことはしない
+  - 起動中の Chrome を終了させる（別のセッションが使っている）
+  - Playwright などのスクリプトに切り替えて続行する
+- 作業を止めて、別のセッションがブラウザを使用中であることを報告し、指示を待つ
