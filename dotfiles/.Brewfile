@@ -77,14 +77,8 @@ cask "jetbrains-air"
 cask "jetbrains-toolbox"
 # Blocks all Keyboard and TouchBar input
 cask "keyboardcleantool"
-# Software for Logitech devices
-cask "logi-options+"
-# GitHub and Linear notifications on your desktop and menu bar
-cask "neat"
 # PHP IDE by JetBrains
 cask "phpstorm"
-# Collaboration platform for API development
-cask "postman"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Ruby on Rails IDE
@@ -95,8 +89,6 @@ cask "session-manager-plugin"
 cask "slack"
 # Native GUI tool for relational databases
 cask "tableplus"
-# Open-source code editor
-cask "visual-studio-code"
 # Bring back the pre-Tahoe macOS volume and brightness UI
 cask "dannystewart/apps/volumehud", trusted: true
 # Rust-based terminal
